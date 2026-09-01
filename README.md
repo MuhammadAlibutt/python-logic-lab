@@ -6,28 +6,29 @@ This repository is a learning record. Every finished project should show the pro
 
 ## Start here
 
-1. Read [`PRACTICE_RULES.md`](PRACTICE_RULES.md).
-2. Begin with [`projects/01_fault_priority_triage`](projects/01_fault_priority_triage/README.md).
-3. Complete projects in order unless a specification says that it requires a later CS50P topic.
-4. Update [`PROGRESS.md`](PROGRESS.md) every Sunday.
-5. Never commit company data, internal manuals, customer information, credentials, or copied production code. All supplied examples are synthetic.
+1. Use [`TODAY.md`](TODAY.md) for your first focused session.
+2. Read [`PRACTICE_RULES.md`](PRACTICE_RULES.md).
+3. Begin with [`projects/01_fault_priority_triage`](projects/01_fault_priority_triage/README.md).
+4. Complete projects in order unless a specification says that it requires a later CS50P topic.
+5. Update [`PROGRESS.md`](PROGRESS.md) every Sunday.
+6. Never commit company data, internal manuals, customer information, credentials, or copied production code. All supplied examples are synthetic.
 
 ## Project path
 
 | # | Project | Main CS50P skills | Time guide | Status |
 |---:|---|---|---:|---|
-| 01 | Equipment Fault Priority Triage | Functions, conditionals, exceptions, tests | 45–60 min | ☐ |
-| 02 | Conveyor Fault Event Counter | Loops, dictionaries, sorting, ties | 60–75 min | ☐ |
-| 03 | Airport Asset ID Validator | Functions, regex, validation, tests | 60–90 min | ☐ |
-| 04 | Maintenance Note Regex Parser | Regex groups, dates, ambiguity, tests | 75–105 min | ☐ |
-| 05 | Contact Data Cleaner | Regex, CSV, normalisation, duplicates | 2–3 hours | ☐ |
-| 06 | Multi-File Log Investigator | Regex, files, aggregation, deterministic reports | 3–4 hours | ☐ |
-| 07 | Personal Expense Tracker | Decimal, CSV persistence, filtering, tests | 3–4 hours | ☐ |
-| 08 | Work-Order Triage Pipeline | Business rules, regex, CSV, dates, tests | 4–6 hours | ☐ |
-| 09 | Maintenance CSV Roll-Up | File errors, row errors, aggregation, tests | 2–3 hours | ☐ |
-| 10 | Persistent Task Tracker | JSON, exceptions, CLI design, tests | 4–5 hours | ☐ |
-| 11 | Asset Service Tracker | Classes, composition, JSON, tests | 6–8 hours | ☐ |
-| 12 | Maintenance Operations Analyzer | Full course integration | 10–15 hours | ☐ |
+| 01 | [Equipment Fault Priority Triage](projects/01_fault_priority_triage/README.md) | Functions, conditionals, exceptions, tests | 45–60 min | ☐ |
+| 02 | [Conveyor Fault Event Counter](projects/02_fault_event_counter/README.md) | Loops, dictionaries, sorting, ties | 60–75 min | ☐ |
+| 03 | [Airport Asset ID Validator](projects/03_asset_id_validator/README.md) | Functions, regex, validation, tests | 60–90 min | ☐ |
+| 04 | [Maintenance Note Regex Parser](projects/04_maintenance_note_parser/README.md) | Regex groups, dates, ambiguity, tests | 75–105 min | ☐ |
+| 05 | [Contact Data Cleaner](projects/05_contact_data_cleaner/README.md) | Regex, CSV, normalisation, duplicates | 2–3 hours | ☐ |
+| 06 | [Multi-File Log Investigator](projects/06_log_investigator/README.md) | Regex, files, aggregation, deterministic reports | 3–4 hours | ☐ |
+| 07 | [Personal Expense Tracker](projects/07_expense_tracker/README.md) | Decimal, CSV persistence, filtering, tests | 3–4 hours | ☐ |
+| 08 | [Work-Order Triage Pipeline](projects/08_work_order_triage/README.md) | Business rules, regex, CSV, dates, tests | 4–6 hours | ☐ |
+| 09 | [Maintenance CSV Roll-Up](projects/09_maintenance_csv_rollup/README.md) | File errors, row errors, aggregation, tests | 2–3 hours | ☐ |
+| 10 | [Persistent Task Tracker](projects/10_persistent_task_tracker/README.md) | JSON, exceptions, CLI design, tests | 4–5 hours | ☐ |
+| 11 | [Asset Service Tracker](projects/11_asset_service_tracker/README.md) | Classes, composition, JSON, tests | 6–8 hours | ☐ |
+| 12 | [Maintenance Operations Analyzer](projects/12_maintenance_operations_analyzer/README.md) | Full course integration | 10–15 hours | ☐ |
 
 Projects 01–10 use topics already covered by or around the regular-expression stage. Projects 01 and 02 deliberately revisit fundamentals because logic grows through repetition, not by using advanced syntax. Project 11 should wait until the CS50P OOP week. Project 12 is the capstone and should begin only after Project 11.
 
