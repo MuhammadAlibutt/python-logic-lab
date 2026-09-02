@@ -1,72 +1,95 @@
+
+def ask_yes_no(user_input: str) -> bool:
+    """
+    Normalize user input to a standard format.
+    """
+    while True:
+            try:
+                input_string = input(f"{user_input}: ").strip().lower()
+                if input_string not in ["yes", "no", "y", "n"]:
+                    print("Invalid input. Please enter 'yes' or 'no'.")
+                    continue
+                else:
+                    if input_string in ['yes', 'y']:
+                        input_string = True
+                        break
+                    else:
+                        input_string = False
+                        break
+            except ValueError:
+                print("Invalid input.")
+                continue
+    return input_string
+
+def Report(eq_id: str, piority_id:str)-> str:
+    
+    if piority_id == "P1":
+        return f"{eq_id} | P1 | Escalate immediately"
+    elif piority_id == "P2":
+        return f"{eq_id} | P2 | Attend this shift"
+    elif piority_id == "P3":
+        return f"{eq_id} | P3 | Schedule inspection"
+    elif piority_id == "P4":
+        return f"{eq_id} | P4 | Monitor"
+    else:
+        return f"{eq_id} | Unclassified | Please check manually"
+
 def take_input():
-    try:
+    while True:
+        try:
+            eq_id = input("Enter the equipment ID: ").strip().upper()
+            if eq_id == "":
+                print("Equipment ID cannot be empty. Please enter a valid ID.")
+                continue
+        except ValueError:
+            print("Invalid input. Please enter a valid equipment ID.")
+            continue
+        break
+    
+    safety_risk = ask_yes_no("safety risk? (yes/no)")
+    
+    stop = ask_yes_no("Equipment Stopped? (yes/no)")
 
-        while True:
-            eq_id = str(input("Enter the equipment ID: ")).strip().upper()
-            if eq_id.strip() == "" or not eq_id.startswith("CV-"):
-                 print("Equipment ID cannot be empty and must start with 'cv-'. Please enter a valid ID.")
-            else:
-                break
-
-        while True:
-            safety_critical = input("Safety Risk? (yes/no): ").strip().lower()
-            if safety_critical not in ["yes", "no", "y", "n"]:
-                print("Invalid input. Please enter 'yes' or 'no'.")
-            else:
-                break 
-            
-        while True:
-            is_working = input("Is the equipment working? (yes/no): ").strip().lower()
-            if is_working not in ["yes", "no", "y", "n"]:
-                print("Invalid input. Please enter 'yes' or 'no'.")
-            else:
-                break
-
-        while True:
+    while True:
+        try:
             downtime = int(input("Enter the downtime/disruption in minutes: ").strip())
-            if downtime < 0 :
-                print("Downtime cannot be negative or exceed 1440 minutes (24 hours). Please enter a valid value.")
-            else:
-                break
-        result = priority_triage(eq_id, safety_critical, is_working, downtime)
-        return result     
-    except ValueError:
-        return "Invalid input. Please enter a valid value"
+            if downtime < 0:
+                print("Downtime cannot be negative. Please enter a valid value.")
+                continue
+        except ValueError:
+            print("Invalid input. Please enter a valid integer for downtime.")
+            continue
+        break
+    return priority_triage(eq_id, safety_risk, stop, downtime)  
 
-def priority_triage(eq_id: str, safety_critical: str, is_working: str, downtime: int)-> str:
+def priority_triage(eq_id: str, safety_risk: bool, stop: bool, downtime: int)-> str:
     """
     Function to determine the priority of equipment based on user input.
     """
-    if safety_critical in ["yes", 'y']:
-        return f"{eq_id} | P1 | Escalate immediately"
+    if safety_risk:
+        return Report(eq_id= eq_id, piority_id="P1")
             
-    elif safety_critical in ["no", 'n'] and downtime >= 30 and is_working in ["no", 'n']:
-        return f"{eq_id} | P1 | Escalate immediately"
+    elif not safety_risk and downtime >= 30 and stop:
+        return Report( eq_id=eq_id , piority_id="P1")
             
-    elif downtime < 30 and is_working in ["no", 'n']:
-        return f"{eq_id} | P2 | Attend this shift"
+    elif downtime < 30 and stop:
+        return Report(eq_id=eq_id, piority_id="P2")
             
-    elif downtime >= 60 and is_working in ["yes", 'y']:
-        return f"{eq_id} | P2 | Need to Attend this shift"
-            
-    elif 1 <= downtime <=59 and is_working in ["yes", 'y']:
-        return f"{eq_id} | P3 | Schedule inspection"
-            
-    elif 0 <= downtime < 1 and is_working in ["yes", 'y']:
-         return f"{eq_id} | P4 | Monitor "
-    else:
-            return f"{eq_id} | Need more Inspection | Please check the equipment"
+    elif downtime >= 60 and not stop:
+        return Report(eq_id=eq_id , piority_id="P2")
     
+    elif downtime == 0 and not stop:
+             return Report(eq_id=eq_id, piority_id="P4") 
+              
+    elif downtime < 60  and not stop:
+        return Report(eq_id=eq_id , piority_id= "P3")
+    else:
+        return Report(eq_id=eq_id, piority_id="UNKNOWN")
         
 
 def main():
-    try:
-        priority = take_input()
-        print(priority)
-    except Exception as e:
-        print(f"An error occurred: {e}")
-    except ValueError:
-        print("Invalid input. Please enter a valid value.")
+    priority = take_input()
+    print(priority)
 
 if __name__ == "__main__":
     main()
